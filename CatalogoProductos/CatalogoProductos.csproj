@@ -314,4 +314,13 @@
     <Compile Include="CatalogData.cs" />
     <Content Include="Auth.Master" />
   </ItemGroup>
-<ItemGroup><Content Include="Database\002_usuarios.sql" /></ItemGroup></Project>
+  <ItemGroup>
+    <Content Include="Database\002_usuarios.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Database\001_productos.sql" />
+    <None Include="Database\003_datos_prueba.sql" />
+    <None Include="Database\004_consultas.sql" />
+    <None Include="Database\INSTALAR_LOCAL.sql" />
+  </ItemGroup>
+</Project>
