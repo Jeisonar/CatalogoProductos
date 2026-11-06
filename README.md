@@ -1,4 +1,8 @@
 # Nexo — Catálogo de productos
+
+**Aplicación publicada:** https://nexocatalogojeison.somee.com/
+
+Para utilizarla, elegir Crear una cuenta e iniciar sesión. El catálogo es compartido.
 Aplicación ASP.NET Web Forms (C#, .NET Framework 4.7.2), SQL Server y ADO.NET.
 
 ## Pantallas
@@ -29,6 +33,6 @@ Compilación correcta, registro con confirmación, credenciales correctas e inco
 - [Investigación en Markdown](docs/INVESTIGACION.md)
 - [Instalación completa de la base](CatalogoProductos/Database/INSTALAR_LOCAL.sql)
 - [Consultas explicadas](CatalogoProductos/Database/004_consultas.sql)
-- [Guía de publicación en Azure](docs/PUBLICACION_AZURE.md)
+- [Guía de publicación en Somee](docs/PUBLICACION_SOMEE.md)
 
-La aplicación publicada y su base de Azure son independientes de los datos locales. El enlace público se incorpora después de verificar el despliegue.
+La aplicación se publica en Somee con ASP.NET 4.x y una base SQL Server 2022 Express llamada NexoCatalogo, independiente de los datos locales. Se verificaron HTTPS, cuentas, acceso protegido, guardado persistente, búsquedas y filtros. La base publicada conserva los diez ejemplos y un producto de demostración adicional.

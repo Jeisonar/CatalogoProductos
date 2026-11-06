@@ -7,7 +7,7 @@ Nexo permite registrar y consultar productos mediante páginas separadas de inic
 
 ## 1 Nombre y descripción del stack
 
-Se seleccionó un stack de Microsoft compuesto por C#, ASP.NET Web Forms sobre .NET Framework 4.7.2, ADO.NET y SQL Server. La interfaz utiliza HTML y CSS. Web Forms ejecuta código en el servidor y genera el HTML que recibe el navegador [1]. El entorno local verificado utiliza SQL Server 2025; SSMS permite administrarlo.
+Se seleccionó un stack de Microsoft compuesto por C#, ASP.NET Web Forms sobre .NET Framework 4.7.2, ADO.NET y SQL Server. La interfaz utiliza HTML y CSS. Web Forms ejecuta código en el servidor y genera el HTML que recibe el navegador [1]. El entorno local utiliza SQL Server 2025 y el alojamiento utiliza SQL Server 2022 Express. SSMS permite administrar la base local.
 
 | Componente | Tecnología y función en Nexo |
 | --- | --- |
@@ -17,7 +17,7 @@ Se seleccionó un stack de Microsoft compuesto por C#, ASP.NET Web Forms sobre .
 | Acceso a datos | ADO.NET con System.Data.SqlClient conecta la aplicación con SQL Server. |
 | Base de datos | SQL Server conserva productos y cuentas de usuario. |
 | Herramientas | Visual Studio permite desarrollar y compilar; SSMS administra la base. |
-| Publicación | Azure App Service para Windows y Azure SQL Database. El despliegue público está pendiente. |
+| Publicación | Somee con Windows Server 2022, IIS 10, ASP.NET 4.8 y SQL Server 2022 Express. |
 
 Web Forms pertenece a ASP.NET clásico sobre .NET Framework. El proyecto desarrollado no utiliza ASP.NET Core, MVC ni Razor Pages. La consigna permite elegir otras tecnologías de complejidad equivalente.
 
@@ -27,9 +27,9 @@ Web Forms pertenece a ASP.NET clásico sobre .NET Framework. El proyecto desarro
 
 Facilidad de aprendizaje. Se aprovecha el proyecto abierto en Visual Studio y un modelo de eventos que relaciona acciones visibles con métodos concretos: Guardar_Click, Buscar_Click y Entrar_Click. Separar cada pantalla ayuda a comprender sus responsabilidades.
 
-Documentación. Microsoft publica documentación de Web Forms, ADO.NET, SQL Server y despliegue en App Service [1–4]. Estos recursos permiten consultar el funcionamiento de las páginas y las consultas.
+Documentación. Microsoft publica documentación de Web Forms, ADO.NET y SQL Server. Somee documenta la compatibilidad de su alojamiento [1–4]. Estos recursos permiten consultar el funcionamiento de las páginas y las consultas.
 
-Compatibilidad. Las tecnologías del servidor trabajan dentro del entorno .NET de Windows. ADO.NET proporciona el puente entre la aplicación y el origen de datos [2]. App Service ofrece ejecución de .NET Framework en Windows [3].
+Compatibilidad. Las tecnologías del servidor trabajan dentro del entorno .NET de Windows. ADO.NET proporciona el puente entre la aplicación y el origen de datos [2]. Somee permite ejecutar ASP.NET 4.x y alojar la base SQL en su paquete de Windows [3].
 
 Adecuación al alcance. Un catálogo pequeño necesita registrar, listar, buscar y resumir información. SQL Server representa cada producto como una fila y permite ejecutar estas operaciones sin incorporar un ORM ni una API independiente.
 
@@ -169,8 +169,9 @@ Inicio muestra el propósito y los resúmenes; Registrar contiene el formulario;
 | Diseño adaptable | Revisión visual en 1440 y 390 píxeles; tabla desplazable en teléfono. |
 | Acceso | Creación de cuenta, login, logout, rutas protegidas y bloqueo temporal. |
 | Instalación | Tablas nuevas y semilla ejecutada dos veces sin duplicar ejemplos. |
+| Publicación HTTPS | Aplicación accesible en Somee con certificado válido y conexión SQL remota. |
 
-Las pruebas utilizaron una cuenta y un producto temporales que se retiraron al finalizar. Se conservaron los diez registros originales. Los resúmenes anteriores corresponden a esos ejemplos; cambian cuando se agregan productos.
+Las pruebas locales utilizaron registros temporales que se retiraron. En Somee se conservaron los diez ejemplos y un producto de demostración: 11 productos, 226 unidades y 539 001,00 colones. El guardado y la persistencia se comprobaron desde la web publicada. Los resúmenes de la sección 5 corresponden a los diez ejemplos iniciales.
 
 ### Alcance
 
@@ -190,9 +191,11 @@ Nexo permite registrar y consultar productos. No incorpora edición, eliminació
 
 ### Publicación y acceso del docente
 
-La plataforma seleccionada es Azure App Service para Windows con Azure SQL Database. App Service admite aplicaciones ASP.NET compiladas [3]. Deben aplicarse los scripts de esquema y ejemplos en la base de Azure, configurar CatalogoDB y habilitar HTTPS. La autenticación de Windows de localhost no se traslada automáticamente a Azure.
+La plataforma utilizada es Somee, en un paquete gratuito de Windows/IIS con ASP.NET 4.x y SQL Server 2022 Express [3]. Se cargó el paquete compilado Release y se instaló la base remota NexoCatalogo. CatalogoDB se configuró con autenticación SQL del alojamiento. Sus credenciales se conservan únicamente en el servidor, fuera de GitHub.
 
-La versión documentada está verificada localmente. El despliegue público aún no se ha realizado. Localhost no sirve como enlace de entrega al docente. El repositorio contiene código y scripts; debe ser público o compartirse con la cuenta del docente.
+La aplicación está publicada con HTTPS. El docente puede abrir el enlace, crear su cuenta e iniciar sesión para consultar o registrar productos. El repositorio es público e incluye el código, los scripts y este informe. El certificado gratuito se renueva manualmente desde Somee; el panel indica renovación a partir del 4 de enero de 2027.
+
+[Aplicación publicada](https://nexocatalogojeison.somee.com/)
 
 [Repositorio del código fuente](https://github.com/Jeisonar/CatalogoProductos)
 
@@ -204,6 +207,6 @@ Consultadas el 5 de noviembre de 2026. Los métodos, pantallas y resultados desc
 
 [[2] Microsoft Learn  Recuperar y modificar datos con ADO NET](https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/retrieving-and-modifying-data)
 
-[[3] Microsoft Learn  Configurar ASP NET en Azure App Service](https://learn.microsoft.com/en-us/azure/app-service/configure-language-dotnet-framework)
+[[3] Somee  Alojamiento gratuito ASP NET y SQL Server](https://somee.com/FreeAspNetHosting.aspx)
 
 [[4] Microsoft Learn  GROUP BY en Transact SQL](https://learn.microsoft.com/en-us/sql/t-sql/queries/select-group-by-transact-sql)
